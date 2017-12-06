@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="志颖の微博">
 <meta property="og:description" content="var gitment = new Gitment({   owner: &apos;HZhiYing&apos;,   repo: &apos;HZhiYing.github.io&apos;,   oauth: {     client_id: &apos;bbae55d52d3c4fe54f8e&apos;,     client_secret: &apos;520b29e6a2e0610713d9252a3b739f10743f89ab Revoke">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-06T11:20:31.086Z">
+<meta property="og:updated_time" content="2017-12-06T11:27:26.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="测试文件">
 <meta name="twitter:description" content="var gitment = new Gitment({   owner: &apos;HZhiYing&apos;,   repo: &apos;HZhiYing.github.io&apos;,   oauth: {     client_id: &apos;bbae55d52d3c4fe54f8e&apos;,     client_secret: &apos;520b29e6a2e0610713d9252a3b739f10743f89ab Revoke">
@@ -488,8 +488,7 @@ gitment.render('container')
   
     <div class="comments" id="comments">
       
-        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
-        <div id="gitment-container" style="display:none"></div>
+        <div id="gitment-container"></div>
       
     </div>
 
@@ -803,11 +802,7 @@ gitment.render('container')
       }
 
       
-      function showGitment(){
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        renderGitment();
-      }
+      renderGitment();
       
       </script>
     
