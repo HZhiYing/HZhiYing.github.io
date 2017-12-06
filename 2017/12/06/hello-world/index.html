@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="志颖の微博">
 <meta property="og:description" content="const myTheme = {   render(state, instance) {     const container = document.createElement(&apos;div&apos;)     container.lang = &quot;en-US&quot;     container.className = &apos;gitment-container gitment-root-container&apos;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-06T11:37:32.452Z">
+<meta property="og:updated_time" content="2017-12-06T11:40:50.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
 <meta name="twitter:description" content="const myTheme = {   render(state, instance) {     const container = document.createElement(&apos;div&apos;)     container.lang = &quot;en-US&quot;     container.className = &apos;gitment-container gitment-root-container&apos;">
@@ -393,14 +393,15 @@ const myTheme = {
     return container
   },
 }
-var gitment = new Gitment({
+
+const gitment = new Gitment({
   theme: myTheme,
   owner: 'HZhiYing',
   repo: 'HZhiYing.github.io',
   oauth: {
     client_id: 'bbae55d52d3c4fe54f8e',
-    client_secret: '520b29e6a2e0610713d9252a3b739f10743f89ab
-Revoke all user tokens',
+    client_secret: '520b29e6a2e0610713d9252a3b739f10743f89ab'
+
   },
 })
 gitment.render('container')
