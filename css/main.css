@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5e26da;
+  background: #52c1ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3034,9 +3034,6 @@ h6 {
 .gitment-header-container {
   margin: 0px 0px;
 }
-.gitment-comments-list li {
-  text-align: left;
-}
 .gitment-markdown p {
   font-size: 14px;
 }
@@ -3049,7 +3046,4 @@ h6 {
   font-size: 14px !important;
   color: #555 !important;
   border-bottom: 1px solid #ccc;
-}
-.post-body ol li {
-  text-align: left;
 }
