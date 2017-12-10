@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #18fbda;
+  background: #a29ce8;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3044,11 +3044,13 @@ h6 {
 .gitment-markdown p {
   font-size: 14px;
 }
+.gitment-comments-loading,
+.gitment-comments-error,
+.gitment-comments-empty {
+  margin: 20px 0 25px !important;
+}
 .tag-cloud a {
   font-size: 14px !important;
   color: #555 !important;
   border-bottom: 1px solid #ccc;
-}
-.page-post-detail .comments {
-  text-align: center;
 }
