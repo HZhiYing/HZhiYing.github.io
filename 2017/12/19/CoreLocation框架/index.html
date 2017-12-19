@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic|Comic Sans MS:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="系统框架," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="志颖の博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;&amp;emsp;CoreLocation 框架可用于定位设备当前的经纬度，通过该框架，应用程序可通过附近的蜂窝基站、WIFI信号或者GPS等信息计算用户位置。其中 CLLocationManager 是整个 CoreLocation 框架的核心，定位、方向检测、区域检测等都由该API完成。">
+<meta name="keywords" content="系统框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CoreLocation框架">
+<meta property="og:url" content="http://yoursite.com/2017/12/19/CoreLocation框架/index.html">
+<meta property="og:site_name" content="志颖の博客">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;&amp;emsp;CoreLocation 框架可用于定位设备当前的经纬度，通过该框架，应用程序可通过附近的蜂窝基站、WIFI信号或者GPS等信息计算用户位置。其中 CLLocationManager 是整个 CoreLocation 框架的核心，定位、方向检测、区域检测等都由该API完成。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-19T17:32:17.020Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CoreLocation框架">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;&amp;emsp;CoreLocation 框架可用于定位设备当前的经纬度，通过该框架，应用程序可通过附近的蜂窝基站、WIFI信号或者GPS等信息计算用户位置。其中 CLLocationManager 是整个 CoreLocation 框架的核心，定位、方向检测、区域检测等都由该API完成。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '列夫托儿.吃鸡'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/19/CoreLocation框架/"/>
+
+
+
+
+
+  <title>CoreLocation框架 | 志颖の博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?255a91e00ef027f416c058f8eeb4fb9c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">志颖の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/CoreLocation框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="黄志颖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="志颖の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CoreLocation框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T07:17:37+08:00">
+                2017-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/19/CoreLocation框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/12/19/CoreLocation框架/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/19/CoreLocation框架/" class="leancloud_visitors" data-flag-title="CoreLocation框架">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;&emsp;CoreLocation 框架可用于定位设备当前的经纬度，通过该框架，应用程序可通过附近的蜂窝基站、WIFI信号或者GPS等信息计算用户位置。其中 CLLocationManager 是整个 CoreLocation 框架的核心，定位、方向检测、区域检测等都由该API完成。<br><a id="more"></a></p>
+<h4 id="定位服务"><a href="#定位服务" class="headerlink" title="定位服务"></a>定位服务</h4><blockquote>
+<ul>
+<li>标准定位: GPS/WIFI/蓝牙/基站 (具体使用哪个定位,由苹果内部自行决定)</li>
+<li>蓝牙: 如果当前设备无法完成定位服务,可以通过蓝牙连接”A设备”, 使用”A设备”进行定位, 当然定位获得的是”A设备”所在位置信息。</li>
+<li>基站定位(必须有电话卡): 手机处于基站覆盖范围内, 定位到的位置是基站所在的位置,不是手机所在的位置。</li>
+<li>WIFI 定位: 通过无线卡搜集周围所有的 WIFI 热点, 获得其 MAC 地址,然后通过 Apple 云端服务器查询该 WiFi 热点是否已经登记，如果已经登记，即可获取该WiFi热点的位置，最后通过对多个WiFi热点折中计算得到当前位置并返给iOS设备。</li>
+</ul>
+</blockquote>
+<h5 id="开启定位服务"><a href="#开启定位服务" class="headerlink" title="开启定位服务"></a>开启定位服务</h5><blockquote>
+<ul>
+<li><p>案例要求: 打印获得的定位信息( 格式: “北偏东” 30度, 移动了8米 )。</p>
+</li>
+<li><p>精确度: 定位精确准度越高, 越耗电, 定位所需时间越长, 尽量在满足要求的情况下, 使用低精确度。</p>
+<ul>
+<li>kCLLocationAccuracyBestForNavigation -&gt; 最适合的定位</li>
+<li>kCLLocationAccuracyBest -&gt; 10米误差</li>
+<li>kCLLocationAccuracyNearestTenMeters -&gt; 100米误差</li>
+<li>kCLLocationAccuracyKilometer -&gt; 1000米误差</li>
+<li>kCLLocationAccuracyThreeKilometers -&gt; 3000米误差</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CoreLocation</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 管理者对象(iOS8.0 以后,如要使用定位服务,必须主动请求用户授权)</span></span><br><span class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> locationM: <span class="type">CLLocationManager</span> = &#123;</span><br><span class="line">        <span class="keyword">let</span> locationM = <span class="type">CLLocationManager</span>()</span><br><span class="line">        locationM.delegate = <span class="keyword">self</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// iOS8.0 及以后版本,需要主动请求用户授权</span></span><br><span class="line">        <span class="keyword">if</span> #available(iOS <span class="number">8.0</span>, *) &#123;</span><br><span class="line">            <span class="comment">// 请求开启"前台定位授权",退到后台,定位服务可用,"有蓝条"</span></span><br><span class="line">            <span class="comment">// info.plist 必须存在: "NSLocationWhenInUseUsageDescription"</span></span><br><span class="line">            locationM.requestWhenInUseAuthorization()</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 请求开启"前后台定位授权",退到后台定位服务可用,"无蓝条"(优先级比前台定位授权高)</span></span><br><span class="line">            <span class="comment">// "info.plist" 中必须存在: "NSLocationAlwaysAndWhenInUseUsageDescription" 和 "NSLocationWhenInUseUsageDescription"</span></span><br><span class="line">            locationM.requestAlwaysAuthorization()</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// iOS9.0 及以上版本, 如要实现后台定位, "info.plist" 文件中必须存在: "UIBackgroundModes"</span></span><br><span class="line">            <span class="comment">// 并且,将 "allowsBackgroundLocationUpdates" 属性设置为 "true"</span></span><br><span class="line">            <span class="keyword">if</span> #available(iOS <span class="number">9.0</span>, *) &#123;</span><br><span class="line">                locationM.allowsBackgroundLocationUpdates = <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置定位执行条件(距离100.0米)</span></span><br><span class="line">        locationM.distanceFilter = <span class="number">100.0</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置定位精确度</span></span><br><span class="line">        locationM.desiredAccuracy = kCLLocationAccuracyBestForNavigation;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> locationM;</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 记录上一次位置信息</span></span><br><span class="line">    <span class="keyword">var</span> previousLocation: <span class="type">CLLocation</span>?</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 点击屏幕,开始定位</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">touchesBegan</span><span class="params">(<span class="number">_</span> touches: Set&lt;UITouch&gt;, with event: UIEvent?)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 开启定位服务(推荐)</span></span><br><span class="line">        locationM.startUpdatingLocation();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 开启重大位置变化监听</span></span><br><span class="line">        locationM.startMonitoringSignificantLocationChanges();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 定位逻辑:按照精确度从低到高进行定位,如果定位超时,返回已定位到的最高精确度的信息</span></span><br><span class="line">        <span class="comment">// 必须实现地理方法: "locationManager: didFailWithError:"</span></span><br><span class="line">        <span class="comment">// 不能与: "startUpdatingLocation"或"allowDeferredLocationUpdates"同时使用</span></span><br><span class="line">        <span class="keyword">if</span> #available(iOS <span class="number">9.0</span>, *) &#123;</span><br><span class="line">            locationM.requestLocation()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="通过代理获得相关信息"><a href="#通过代理获得相关信息" class="headerlink" title="通过代理获得相关信息"></a>通过代理获得相关信息</h5><blockquote>
+<p><strong>CLLocation</strong> 常用相关属性: <code>coordinate</code>: 经纬度;&emsp; <code>altitude</code>: 海拔;&emsp; <code>horizontalAccuracy</code>: 水平精确度(负值: 获得的位置信息无效);&emsp; <code>verticalAccuracy</code>: 垂直精确度(负值: 获得的位置信息无效);&emsp; <code>course</code>: 航向;&emsp; <code>speed</code>: 速度。<br>方法: <code>func distance(from location: CLLocation) -&gt; CLLocationDistance:</code> 计算当前位置与指定位置的直线距离。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">extension MainViewContoller: CLLocationManagerDelegate &#123;</span><br><span class="line">    // 响应位置改变,获取当前用户位置信息</span><br><span class="line">    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) &#123; </span><br><span class="line">        // CLLocation对象</span><br><span class="line">        guard let location: CLLocation = locations.last else &#123; return &#125;</span><br><span class="line">        </span><br><span class="line">        // 获得当前航向</span><br><span class="line">        let courses = [&quot;北偏东&quot;, &quot;东偏南&quot;, &quot;南偏西&quot;, &quot;西偏北&quot;]</span><br><span class="line">        var course = courses[(Int(location.course) / 90)]</span><br><span class="line">        </span><br><span class="line">        // 获得偏移角度</span><br><span class="line">        let angle = Int(location.course) % 90</span><br><span class="line">        guard angle &gt; 0 else &#123; return &#125;</span><br><span class="line">        </span><br><span class="line">        // 判断是否为:正北,正南,正东,正西</span><br><span class="line">        if angle == 0 &#123;</span><br><span class="line">            course = &quot;正&quot; + String((course as NSString).substring(to: 1))</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 获得移动距离</span><br><span class="line">        guard previousLocation != nil else &#123;</span><br><span class="line">            previousLocation = location</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        let distance = location.distance(from: previousLocation!)</span><br><span class="line">        previousLocation = location;</span><br><span class="line">        </span><br><span class="line">        // 打印相关信息</span><br><span class="line">        if angle == 0 &#123;</span><br><span class="line">            print(&quot;\(course) 移动了\(distance)米&quot;)</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            print(&quot;\(course) \(angle)度 移动了\(distance)米&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 获得当前用户的授权状态</span><br><span class="line">    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) &#123;</span><br><span class="line">        switch status &#123;</span><br><span class="line">        case .notDetermined: </span><br><span class="line">            print(&quot;用户未决定是否开启定位授权&quot;)</span><br><span class="line">        case .restricted:</span><br><span class="line">            print(&quot;定位服务受到限制&quot;)</span><br><span class="line">        case .denied: // 两种情况: 1.用户拒绝授权; 2.手机定位服务关闭</span><br><span class="line">            // 1.用户拒绝授权使用定位服务</span><br><span class="line">            if CLLocationManager.locationServicesEnabled() &#123; </span><br><span class="line">                // iOS 8.0 以后, 系统提供了快捷跳转到设置界面的方法</span><br><span class="line">                if #available(iOS 8.0, *) &#123;</span><br><span class="line">                    let settingUrl = URL(string: UIApplicationOpenSettingsURLString)</span><br><span class="line">                    if UIApplication.shared.canOpenURL(settingUrl!) &#123;</span><br><span class="line">                        UIApplication.shared.openURL(settingUrl!)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;else &#123; </span><br><span class="line">                // 2.手机定位服务关闭(系统会自动跳转到打开定位服务界面)</span><br><span class="line">                print(&quot;手机定位服务关闭&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        case .authorizedWhenInUse:</span><br><span class="line">            print(&quot;前台定位授权&quot;)</span><br><span class="line">        case .authorizedAlways:</span><br><span class="line">            print(&quot;前后台定位授权&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 定位失败</span><br><span class="line">    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) &#123;</span><br><span class="line">         print(&quot;定位失败&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="方向监测"><a href="#方向监测" class="headerlink" title="方向监测"></a>方向监测</h4><h5 id="开启设备朝向更新检测"><a href="#开启设备朝向更新检测" class="headerlink" title="开启设备朝向更新检测"></a>开启设备朝向更新检测</h5><blockquote>
+<p>设备朝向监测: 通过”磁力计”实现。<br><code>headingFilter</code>: 方向的改变值超过该属性值, 才激活代理方法<br><code>headingOrientation</code>: 设置设备朝向</p>
+<p>案例: 指南针。</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CoreLocation</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 指南针视图</span></span><br><span class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> compassImageView: <span class="type">UIImageView</span>!</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> locationM: <span class="type">CLLocationManager</span> = &#123;</span><br><span class="line">        <span class="keyword">let</span> locationM = <span class="type">CLLocationManager</span>()</span><br><span class="line">        locationM.delegate = <span class="keyword">self</span></span><br><span class="line">        <span class="keyword">return</span> locationM</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 点击屏幕,开启朝向服务</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">touchesBegan</span><span class="params">(<span class="number">_</span> touches: Set&lt;UITouch&gt;, with event: UIEvent?)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 判断磁力计是否可用</span></span><br><span class="line">        <span class="keyword">if</span> <span class="type">CLLocationManager</span>.headingAvailable() &#123;</span><br><span class="line">            <span class="comment">// 开始监听当前设备朝向</span></span><br><span class="line">            locationM.startUpdatingHeading()</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"无法识别当前设备磁力计"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="通过代理获得相关信息-1"><a href="#通过代理获得相关信息-1" class="headerlink" title="通过代理获得相关信息"></a>通过代理获得相关信息</h5><blockquote>
+<p><strong>CLHeading</strong> 常用属性: <code>magneticHeading</code>: 设备与磁北的相对方向;&emsp; <code>trueHeading</code>: 设备与真北的相对方向;&emsp; <code>headingAccuracy</code>: 方向值的错误范围;&emsp; <code>timestamp</code>: 方向值的生成时间;&emsp; <code>x(y,z)</code>: 获取该设备在x(y,z)方向上监听得到的原始磁力值(单位:微特斯拉)。</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MainViewController</span>: <span class="title">CLLocationManagerDelegate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">locationManager</span><span class="params">(<span class="number">_</span> manager: CLLocationManager, didUpdateHeading newHeading: CLHeading)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 获得设备朝向</span></span><br><span class="line">        <span class="keyword">let</span> magnetic = newHeading.magneticHeading</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 角度转弧度</span></span><br><span class="line">        <span class="keyword">let</span> angle = <span class="type">CGFloat</span>(magnetic / <span class="number">180</span> * .pi)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 旋转(动画)</span></span><br><span class="line">        <span class="type">UIView</span>.animate(withDuration: <span class="number">1.0</span>) &#123;</span><br><span class="line">            <span class="keyword">self</span>.compassImageView.transform = <span class="type">CGAffineTransform</span>(rotationAngle: -angle)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="区域检测"><a href="#区域检测" class="headerlink" title="区域检测"></a>区域检测</h4><blockquote>
+<p>iOS 8.0 及以后,需要主动请求用户授权</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CoreLocation</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 管理者对象</span></span><br><span class="line">    <span class="built_in">lazy</span> <span class="keyword">var</span> locationM: <span class="type">CLLocationManager</span> = &#123;</span><br><span class="line">        <span class="keyword">let</span> locationM = <span class="type">CLLocationManager</span>()</span><br><span class="line">        locationM.delegate = <span class="keyword">self</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 主动请求授权</span></span><br><span class="line">        <span class="keyword">if</span> #available(iOS <span class="number">8.0</span>, *) &#123;</span><br><span class="line">            locationM.requestWhenInUseAuthorization()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> locationM</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 开启区域监听</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">touchesBegan</span><span class="params">(<span class="number">_</span> touches: Set&lt;UITouch&gt;, with event: UIEvent?)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 确定监听区域可识别</span></span><br><span class="line">        <span class="keyword">if</span> <span class="type">CLLocationManager</span>.isMonitoringAvailable(<span class="keyword">for</span>: <span class="type">CLCircularRegion</span>.<span class="keyword">self</span>) &#123;</span><br><span class="line">            <span class="comment">// 设置监听区域</span></span><br><span class="line">            <span class="keyword">let</span> center = <span class="type">CLLocationCoordinate2D</span>(latitude: <span class="number">23.126</span>, longitude: <span class="number">113.395</span>)</span><br><span class="line">            <span class="keyword">var</span> radius: <span class="type">CLLocationDistance</span> = <span class="number">1000</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">distance</span> &gt;= locationM.maximumRegionMonitoringDistance &#123;</span><br><span class="line">                <span class="built_in">distance</span> = locationM.maximumRegionMonitoringDistance</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">let</span> identifier: <span class="type">String</span> = <span class="string">"区域标识"</span></span><br><span class="line">            <span class="keyword">let</span> circularRegion = <span class="type">CLCircularRegion</span>(center: center, radius: radius, identifier: identifier)</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 开始区域监听</span></span><br><span class="line">            locationM.startMonitoring(<span class="keyword">for</span>: circularRegion)</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 请求监听状态</span></span><br><span class="line">            locationM.requestState(<span class="keyword">for</span>: region)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="通过代理获得相关信息-2"><a href="#通过代理获得相关信息-2" class="headerlink" title="通过代理获得相关信息"></a>通过代理获得相关信息</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MainViewController</span>: <span class="title">CLLocationManagerDelegate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">locationManager</span><span class="params">(<span class="number">_</span> manager: CLLocationManager, didStartMonitoringFor region: CLRegion)</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"开启区域监听"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">locationManager</span><span class="params">(<span class="number">_</span> manager: CLLocationManager, didEnterRegion region: CLRegion)</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"进入该区域"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">locationManager</span><span class="params">(<span class="number">_</span> manager: CLLocationManager, didExitRegion region: CLRegion)</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"离开该区域"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">locationManager</span><span class="params">(<span class="number">_</span> manager: CLLocationManager, didDetermineState state: CLRegionState, <span class="keyword">for</span> region: CLRegion)</span></span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> state &#123;</span><br><span class="line">        <span class="keyword">case</span> .inside:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"进入该区域"</span>)</span><br><span class="line">        <span class="keyword">case</span> .outside:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"离开该区域"</span>)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"无法识别"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/系统框架/" rel="tag"># 系统框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/10/FMDB框架/" rel="next" title="FMDB框架">
+                <i class="fa fa-chevron-left"></i> FMDB框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="黄志颖" />
+            
+              <p class="site-author-name" itemprop="name">黄志颖</p>
+              <p class="site-description motion-element" itemprop="description">站在风口上,猪都能飞起来!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#定位服务"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5B9A;&#x4F4D;&#x670D;&#x52A1;" class="headerlink" title="&#x5B9A;&#x4F4D;&#x670D;&#x52A1;"></a>&#x5B9A;&#x4F4D;&#x670D;&#x52A1;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#开启定位服务"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x5F00;&#x542F;&#x5B9A;&#x4F4D;&#x670D;&#x52A1;" class="headerlink" title="&#x5F00;&#x542F;&#x5B9A;&#x4F4D;&#x670D;&#x52A1;"></a>&#x5F00;&#x542F;&#x5B9A;&#x4F4D;&#x670D;&#x52A1;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过代理获得相关信息"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;" class="headerlink" title="&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;"></a>&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方向监测"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x65B9;&#x5411;&#x76D1;&#x6D4B;" class="headerlink" title="&#x65B9;&#x5411;&#x76D1;&#x6D4B;"></a>&#x65B9;&#x5411;&#x76D1;&#x6D4B;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#开启设备朝向更新检测"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x5F00;&#x542F;&#x8BBE;&#x5907;&#x671D;&#x5411;&#x66F4;&#x65B0;&#x68C0;&#x6D4B;" class="headerlink" title="&#x5F00;&#x542F;&#x8BBE;&#x5907;&#x671D;&#x5411;&#x66F4;&#x65B0;&#x68C0;&#x6D4B;"></a>&#x5F00;&#x542F;&#x8BBE;&#x5907;&#x671D;&#x5411;&#x66F4;&#x65B0;&#x68C0;&#x6D4B;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过代理获得相关信息-1"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;-1" class="headerlink" title="&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;"></a>&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区域检测"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x533A;&#x57DF;&#x68C0;&#x6D4B;" class="headerlink" title="&#x533A;&#x57DF;&#x68C0;&#x6D4B;"></a>&#x533A;&#x57DF;&#x68C0;&#x6D4B;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过代理获得相关信息-2"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;-2" class="headerlink" title="&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;"></a>&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x83B7;&#x5F97;&#x76F8;&#x5173;&#x4FE1;&#x606F;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">黄志颖</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'HZhiYing',
+            repo: 'HZhiYing.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '520b29e6a2e0610713d9252a3b739f10743f89ab',
+            
+                client_id: 'bbae55d52d3c4fe54f8e'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("4KH2LQumYqoT2Ru3KLjItSG2-gzGzoHsz", "2sUob293n4QK6tlILM19EM8e");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
